@@ -1,0 +1,74 @@
+[
+    {
+        "id": "S1",
+        "attendance": 16,
+        "midsem_marks": 42,
+        "quizzes_attempted": 3,
+        "quiz_scores": [18, 16, 19],
+        "time_per_question": [
+            [2, 3, 2, 1, 2, 4, 3, 3, 3, 3, 2, 3, 2, 2, 3, 3, 2, 3, 4, 2],
+            [3, 3, 2, 2, 3, 2, 2, 4, 3, 3, 2, 3, 3, 2, 2, 2, 3, 4, 3, 2],
+            [2, 2, 3, 3, 4, 3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 3, 2, 2, 4, 3]
+        ],
+        "online_lectures_attended": 8,
+        "lecture_minutes_watched": [100, 95, 85, 90, 100, 80, 70, 100, 90, 60],
+        "practice_questions_attempted": 45
+    },
+    {
+        "id": "S2",
+        "attendance": 14,
+        "midsem_marks": 35,
+        "quizzes_attempted": 2,
+        "quiz_scores": [14, 17],
+        "time_per_question": [
+            [3, 2, 3, 4, 2, 3, 3, 3, 4, 2, 3, 2, 3, 3, 4, 2, 3, 3, 2, 3],
+            [2, 3, 4, 2, 3, 2, 3, 4, 3, 3, 2, 3, 2, 3, 3, 3, 3, 2, 4, 2]
+        ],
+        "online_lectures_attended": 6,
+        "lecture_minutes_watched": [80, 90, 85, 75, 65, 100, 60, 70, 80, 50],
+        "practice_questions_attempted": 30
+    },
+    {
+        "id": "S3",
+        "attendance": 10,
+        "midsem_marks": 28,
+        "quizzes_attempted": 1,
+        "quiz_scores": [10],
+        "time_per_question": [
+            [4, 3, 4, 2, 3, 4, 3, 3, 4, 3, 3, 3, 4, 3, 3, 2, 3, 4, 3, 4]
+        ],
+        "online_lectures_attended": 5,
+        "lecture_minutes_watched": [60, 70, 50, 40, 80, 50, 40, 30, 60, 20],
+        "practice_questions_attempted": 15
+    },
+    {
+        "id": "S4",
+        "attendance": 18,
+        "midsem_marks": 48,
+        "quizzes_attempted": 4,
+        "quiz_scores": [19, 18, 20, 17],
+        "time_per_question": [
+            [2, 2, 2, 3, 2, 3, 2, 2, 3, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 2],
+            [3, 3, 3, 3, 2, 3, 2, 2, 2, 3, 2, 3, 3, 3, 3, 2, 3, 3, 2, 3],
+            [2, 3, 2, 3, 3, 2, 3, 2, 3, 3, 2, 3, 2, 3, 2, 2, 3, 3, 2, 3],
+            [3, 3, 2, 2, 3, 3, 3, 2, 3, 2, 3, 3, 3, 3, 3, 2, 2, 3, 3, 3]
+        ],
+        "online_lectures_attended": 9,
+        "lecture_minutes_watched": [95, 100, 90, 85, 80, 90, 100, 100, 90, 75],
+        "practice_questions_attempted": 50
+    },
+    {
+        "id": "S5",
+        "attendance": 8,
+        "midsem_marks": 22,
+        "quizzes_attempted": 2,
+        "quiz_scores": [9, 12],
+        "time_per_question": [
+            [4, 4, 3, 3, 4, 3, 4, 4, 3, 4, 4, 3, 3, 4, 3, 4, 3, 4, 3, 4],
+            [3, 4, 4, 3, 4, 3, 4, 3, 4, 3, 3, 4, 3, 4, 3, 4, 4, 3, 4, 3]
+        ],
+        "online_lectures_attended": 4,
+        "lecture_minutes_watched": [50, 40, 30, 20, 60, 30, 40, 50, 20, 10],
+        "practice_questions_attempted": 20
+    }
+]

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback System</title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        function fetchMessage() {
+            fetch("http://localhost:5000/") // Request data from Python
+                .then(response => response.json()) // Convert response to JSON
+                .then(data => {
+                    document.getElementById("output").innerText = data.message; // Display message
+                })
+                .catch(error => console.error("Error fetching message:", error));
+        }
+    </script>
+</head>
+<body onload="fetchMessage()">
+    
+    
+    
+    <h1> Student Feedback System</h1>
+    <button onclick="showStudentInterface()">Student</button>
+    <button onclick="showTeacherInterface()">Teacher</button>
+    
+    <div  id="studentInterface" style="display:none;">
+        <h2>Student Portal</h2>
+        <form id="studentForm">
+            <input type="text" id="name" placeholder="Enter Name" required>
+            
+            
+            <button onclick="showStudentReview()" type="submit">View Performance</button>
+            
+
+
+            
+
+        </form>
+
+        <div id="feedback">
+            
+    </div>
+    
+    <div id="teacherInterface" style="display:none;">
+        <h2>Teacher Portal</h2>
+        <form id="teacherForm">
+            <input type="text" id="teacherName" placeholder="Teacher Name" required>
+            <textarea id="classData" placeholder="Enter class data (JSON format)" required></textarea>
+            <button type="submit">Upload Data</button>
+        </form>
+    </div>
+    
+    
+    <script src="node.js"></script>
+</body>
+</html>
+`;
