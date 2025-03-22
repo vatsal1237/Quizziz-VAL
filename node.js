@@ -43,54 +43,108 @@ function showStudentInterface() {
     document.getElementById('teacherInterface').style.display = 'none';
 }
 function showStudentReview() {
-    fetchMessage(); 
     document.body.innerHTML = `
     <div id="studentReview">
         <h2>📊 Student Performance</h2>
-        <p id="output">Loading...</p>
+        <div class="content-container">
+            <p id="output">Loading...</p>
+        </div>
     </div>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: #f4f7fc;
-            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            padding: 20px;
         }
         #studentReview {
             background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 450px;
+            padding: 30px;
             text-align: center;
-            width: 60%;
-            max-width: 500px;
-            animation: fadeIn 0.6s ease-in-out;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideIn 0.6s ease-out;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         h2 {
-            color: #4CAF50;
-            font-size: 24px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            color: #3a7bd5;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .content-container {
+            padding: 20px;
+            border-radius: 12px;
+            background: #f0f7ff;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            max-height: 60vh;
+            overflow-y: auto;
+            border: 1px solid #e1effe;
+            transition: all 0.3s ease;
+        }
+        .content-container:hover {
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         #output {
-            font-size: 18px;
-            color: #333;
-            padding: 15px;
-            border-radius: 8px;
-            background: #e8f5e9;
-            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+            color: #34495e;
+            font-size: 1.05rem;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
+        #output.loading {
+            color: #7f8c8d;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-    </style>
-
-`;
-
-
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        @media (max-width: 600px) {
+            #studentReview {
+                padding: 20px;
+                max-width: 95%;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>`;
+    // Fetch message and update #output after page loads
+    fetch("http://localhost:5000/") 
+        .then(response => response.json()) 
+        .then(data => {
+            const output = document.getElementById("output");
+            output.innerText = data.message;
+            output.classList.remove("loading");
+        })
+        .catch(error => {
+            document.getElementById("output").innerText = "Failed to load data. Please try again.";
+            console.error("Error fetching message:", error);
+        });
+        
+    // Add loading class initially
+    document.getElementById("output").classList.add("loading");
 }
+
+
+
 
 function showTeacherInterface() {
     document.getElementById('teacherInterface').style.display = 'block';
