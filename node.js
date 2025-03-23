@@ -42,6 +42,8 @@ function showStudentInterface() {
     document.getElementById('studentInterface').style.display = 'block';
     document.getElementById('teacherInterface').style.display = 'none';
 }
+
+
 function showStudentReview() {
     document.body.innerHTML = `
     <div id="studentReview">
@@ -145,7 +147,6 @@ function showStudentReview() {
 
 
 
-
 function showTeacherInterface() {
     document.getElementById('teacherInterface').style.display = 'block';
     document.getElementById('studentInterface').style.display = 'none';
@@ -153,11 +154,36 @@ function showTeacherInterface() {
 
 document.getElementById('studentForm').addEventListener('submit', async function(event) {
     event.preventDefault();
-    const id = document.getElementById('studentId').value;
-    const feedbackResponse = await fetch(`http://localhost:5000/feedback/${id}`);
-    const feedbackData = await feedbackResponse.json();
-    document.getElementById('feedback').innerText = feedbackData.feedback;
+    
+    const studentName = document.getElementById('studentName').value.trim(); // Trimmed name
+    const studentId = document.getElementById('studentId').value;
+
+    console.log("Entered Student Name:", studentName); // Debugging line
+
+    // Display student name
+    document.getElementById('studentNameDisplay').innerText = `Student: ${studentName}`;
+
+    try {
+        const feedbackResponse = await fetch(`http://localhost:5000/feedback/${studentId}`);
+        const feedbackData = await feedbackResponse.json();
+
+        document.getElementById('feedback').innerText = feedbackData.feedback;
+
+        // Ensure only S1 to S5 execute showStudentReview()
+        if (["S1", "S2", "S3", "S4", "S5"].includes(studentName)) {
+            console.log("showStudentReview() is being called!"); // Debugging line
+            showStudentReview();
+        } else {
+            console.log("Student is not in S1-S5. Skipping showStudentReview.");
+        }
+
+    } catch (error) {
+        document.getElementById('feedback').innerText = "Error fetching feedback!";
+        console.error("Error fetching feedback:", error);
+    }
 });
+
+    
 
 document.getElementById('teacherForm').addEventListener('submit', async function(event) {
     event.preventDefault();
